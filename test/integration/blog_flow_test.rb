@@ -8,6 +8,7 @@ class BlogFlowTest < ActionDispatch::IntegrationTest
 
   test "can create an article" do
     get "/articles/new"
+
     assert_response :success
 
     post "/articles",
@@ -15,7 +16,6 @@ class BlogFlowTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
     follow_redirect!
-    # byebug
     assert_response :success
     assert_select "p", "Title:\n  can create"
   end
