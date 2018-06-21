@@ -41,3 +41,20 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    desired_capabilities: { "chromeOptions" => { "args" => %w[window-size=1024,768] } },
+  )
+end
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+Capybara.configure do |config|
+  config.default_max_wait_time = 10
+  config.default_driver        = :selenium
+end
