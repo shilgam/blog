@@ -1,0 +1,23 @@
+machine:
+  services:
+    - redis
+  environment:
+    ES_JAVA_OPTS: "-Xms2g -Xmx2g"
+    _JAVA_OPTIONS: "-Xms1024m -Xmx2048m"
+    CONTINUOUS_INTEGRATION: true
+dependencies:
+  post:
+    - if [[ ! -e elasticsearch-5.5.1 ]]; then wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.1.tar.gz && tar -xvf elasticsearch-5.5.1.tar.gz; fi
+    - elasticsearch-5.5.1/bin/elasticsearch: { background: true }
+test:
+  post:
+    - bundle exec codeclimate-test-reporter
+    - bundle exec bundle-audit check --update
+    - bundle exec brakeman -f plain
+  override:                                                              # ADD this section
+    - bundle exec rspec --exclude-pattern "spec/features/**/*.rb"        # We override Circle's test command here to explicitly exclude features specs
+deployment:
+  master:
+    branch: master
+    commands:
+      - cd deployment; bundle install; bundle exec cap staging deploy
