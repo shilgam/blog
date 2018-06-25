@@ -9,10 +9,10 @@ Docker is installed
 
 ### Usage
 
-Build container:
+Run your development environment:
 ```
-docker build -t blog .
-docker run -itP blog
+docker-compose build
+docker-compose up
 ```
 
 Run the test suite:
