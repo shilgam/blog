@@ -1,24 +1,21 @@
-# README
+# Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple blog app built by following getting started guide:  http://guides.rubyonrails.org/getting_started.html
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+### Prerequisities
+Docker is installed
 
-* System dependencies
+### Usage
 
-* Configuration
+Build container:
+```
+docker build -t demo .
+docker run -itP demo
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Run the test suite:
+```
+docker run -it --rm demo bundle exec rake test
+```
