@@ -11,11 +11,11 @@ Docker is installed
 
 Build container:
 ```
-docker build -t demo .
-docker run -itP demo
+docker build -t blog .
+docker run -itP blog
 ```
 
 Run the test suite:
 ```
-docker run -it --rm demo bundle exec rake test
+docker run -it --rm blog "rake test"
 ```
