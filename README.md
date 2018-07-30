@@ -17,9 +17,9 @@ Docker is installed
 
         $ docker-compose up
 
-1. Create the database. In another terminal, run:
+1. Set up the database. In another terminal, run:
 
-        $ docker-compose run web rake db:create
+        $ docker-compose run web rake db:drop db:create db:migrate
 
 1. View the welcome page: http://0.0.0.0:3000
 
