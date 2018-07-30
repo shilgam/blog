@@ -2,7 +2,6 @@ language: ruby
 
 services:
   - docker
-  - postgresql
 
 before_install:
   - docker -v
