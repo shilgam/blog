@@ -4,7 +4,7 @@ Simple blog app built by following getting started guide:  http://guides.rubyonr
 
 ## Getting Started
 
-### Prerequisities
+### Prerequisites
 Docker is installed
 
 ### Deployment instructions
@@ -32,16 +32,20 @@ Docker is installed
         $ docker-compose up
 
 1. Rebuild the application:
-   1. If you make changes to the Gemfile or the Compose file:
+   - If you make changes to the Gemfile or the Compose file:
 
           $ docker-compose up --build
 
-   1.  full rebuild requires a re-run of
+   -  full rebuild requires a re-run of
 
           $ docker-compose run web bundle install
 
       to sync changes in the `Gemfile.lock` to the host, followed by `docker-compose up --build`.
 
-### Run the test suite:
+### Run the test suite
 
-        $ docker run -it --rm blog "rake test"
+        # unit tests:
+        $ docker-compose exec web rake test
+
+        # run browser tests
+        $ docker-compose exec web rspec spec
