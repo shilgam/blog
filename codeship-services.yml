@@ -5,6 +5,8 @@ demo:
   depends_on:
     - redis
     - postgres
+  cached: true
+  default_cache_branch: "develop"
 redis:
   image: healthcheck/redis:alpine
 postgres:
