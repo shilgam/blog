@@ -5,6 +5,8 @@ demo:
   depends_on:
     - redis
     - postgres
+  environment:
+    TEST_TOKEN: Testing123
   cached: true
   default_cache_branch: "develop"
 redis:
