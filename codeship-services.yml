@@ -12,9 +12,9 @@ demo:
   cached: true
   default_cache_branch: "develop"
 
-demo_volumes:
+demoVolumes:
   build:
-    image: myapp
+    image: myapp2
     dockerfile: Dockerfile.volumes
   volumes_from:
     - demo
