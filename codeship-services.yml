@@ -7,9 +7,20 @@ demo:
     - postgres
   environment:
     TEST_TOKEN: Testing123
+  volumes:
+    - ./tmp:/code
   cached: true
   default_cache_branch: "develop"
+
+demo_volumes:
+  build:
+    image: myapp
+    dockerfile: Dockerfile.volumes
+  volumes_from:
+    - demo
+
 redis:
   image: healthcheck/redis:alpine
+
 postgres:
   image: healthcheck/postgres:alpine
