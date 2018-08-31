@@ -5,7 +5,7 @@
       command: bundle exec ruby part1_check.rb
     - name: test
       service: demo
-      command: bundle exec ruby part2_test.rb
+      command: sh -c "echo $TEST_TOKEN && bundle exec ruby part2_test.rb"
     - type: serial
       steps:
       - name: volumes_in
